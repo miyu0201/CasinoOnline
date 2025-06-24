@@ -1,5 +1,5 @@
 //sets base URL for all API request
-const API_URL = 'http://localhost:3001';
+const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3001';
 
 export const login = async (username, password) => {
   const response = await fetch(`${API_URL}/login`, {
