@@ -1,0 +1,79 @@
+{
+  "players": {
+    "alex": {
+      "name": "Alex",
+      "avatar": "./images/avatar/alex.jpg",
+      "event": "Just won 1000 coins on Dragon's Fortune!",
+      "password": "gaming123"
+    },
+    "sarah": {
+      "name": "Sarah",
+      "avatar": "./images/avatar/sarah.jpg",
+      "event": "On a winning streak at Mystic Treasures!",
+      "password": "lucky777"
+    },
+    "mike": {
+      "name": "Mike",
+      "avatar": "./images/avatar/mike.jpg",
+      "event": "Exploring new games in the casino",
+      "password": "jackpot"
+    }
+  },
+  "games": [
+   
+    {
+      "name": "Dragon's Fortune",
+      "description": "Enter the mystical realm of ancient dragons where fortunes await the brave. This 5-reel slot game features stunning dragon animations, wild multipliers, and a unique Dragon's Breath bonus round that can multiply your wins up to 888x! With its immersive Asian-inspired artwork and atmospheric soundtrack, Dragon's Fortune offers an unforgettable gaming experience.",
+      "code": "dragonsfortune",
+      "icon": "./images/game-icon/dragons-fortune.jpg",
+      "categoryIds": [0, 1],
+      "url": "https://www.paf.se/en/slots/game/dragon-dance/"
+    },
+    {
+      "name": "Mystic Treasures",
+      "description": "Embark on an archaeological adventure through ancient Egyptian tombs in search of mystical treasures. This captivating slot features cascading reels, expanding wilds, and the legendary Chamber of Riches bonus game. Uncover the secrets of the pharaohs and claim your share of the ancient wealth in this visually stunning game.",
+      "code": "mystictreasures",
+      "icon": "./images/game-icon/mystic-treasures.jpg",
+      "categoryIds": [0, 2],
+      "url": "https://www.paf.se/en/slots/game/treasure-hunter"
+    },
+    {
+      "name": "Cosmic Wins",
+      "description": "Blast off into the cosmos with this futuristic slot adventure! Navigate through asteroid fields of winning combinations and trigger the innovative Quantum Multiplier feature. With its neon-lit symbols, space-age sound effects, and the possibility of hitting the Galactic Jackpot, Cosmic Wins takes slot gaming to a whole new dimension.",
+      "code": "cosmicwins",
+      "icon": "./images/game-icon/cosmic-wins.jpg",
+      "categoryIds": [0, 1],
+      "url": "https://www.paf.se/en/slots/game/space-wars"
+    },
+    {
+      "name": "Pirates' Plunder",
+      "description": "Set sail on the high seas in search of buried treasure in this swashbuckling slot adventure. Features include the innovative Ship's Wheel bonus spinner, expanding Wild Islands, and the thrilling Kraken's Bounty feature. With its detailed pirate-themed graphics and immersive sound effects, every spin is a new voyage of discovery.",
+      "code": "piratesplunder",
+      "icon": "./images/game-icon/pirates-plunder.jpg",
+      "categoryIds": [0, 2],
+      "url": "https://www.paf.se/en/slots/game/pirates-pub/"
+    },
+    {
+      "name": "Lucky Legends",
+      "description": "Step into a world where luck meets legend in this Irish-themed slot extravaganza. Chase rainbows to trigger the Pot of Gold bonus, collect Lucky Clovers for instant wins, and activate the magical Leprechaun's Fortune feature. With its charming Celtic design and cheerful soundtrack, Lucky Legends brings the luck of the Irish to every spin.",
+      "code": "luckylegends",
+      "icon": "./images/game-icon/lucky-legends.jpg",
+      "categoryIds": [0, 1, 2],
+      "url": "https://www.paf.se/en/slots/game/lucky-77"
+    }
+  ],
+  "categories": [
+    {
+      "id": 0,
+      "name": "ALL"
+    },
+    {
+      "id": 1,
+      "name": "VIDEO SLOTS"
+    },
+    {
+      "id": 2,
+      "name": "SLOT MACHINES"
+    }
+  ]
+} 

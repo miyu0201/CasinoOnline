@@ -1,19 +1,31 @@
 const jsonServer = require('json-server');
-const path = require('path');
-const cors = require('cors');
+const serverless = require('serverless-http');
 
-const server = jsonServer.create();
+// Create an Express server
+const app = jsonServer.create();
+
+// Create a router from our db.json file
 const router = jsonServer.router('db.json');
+
+// Set default middlewares (logger, static, cors and no-cache)
 const middlewares = jsonServer.defaults();
 
 // Enable CORS for all routes
-server.use(cors());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', '*');
+  res.header('Access-Control-Allow-Methods', '*');
+  if (req.method === 'OPTIONS') {
+    return res.send(200);
+  }
+  next();
+});
 
 // Parse JSON bodies
-server.use(jsonServer.bodyParser);
+app.use(jsonServer.bodyParser);
 
 // Custom middleware for authentication
-server.use((req, res, next) => {
+app.use((req, res, next) => {
   if (req.method === 'POST') {
     if (req.path === '/login') {
       const { username, password } = req.body;
@@ -51,23 +63,8 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use(middlewares);
-server.use(router);
+app.use(middlewares);
+app.use(router);
 
-const PORT = process.env.PORT || 3001;
-
-// Handle server errors
-server.on('error', (error) => {
-  if (error.code === 'EADDRINUSE') {
-    console.error(`Port ${PORT} is already in use. Please try a different port.`);
-    process.exit(1);
-  } else {
-    console.error('Server error:', error);
-    process.exit(1);
-  }
-});
-
-server.listen(PORT, () => {
-  console.log(`JSON Server is running on port ${PORT}`);
-  console.log(`Access the API at http://localhost:${PORT}`);
-}); 
+// Export the serverless function
+module.exports.handler = serverless(app); 
