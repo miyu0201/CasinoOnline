@@ -55,7 +55,6 @@ server.use(middlewares);
 server.use(router);
 
 const PORT = process.env.PORT || 3001;
-<<<<<<< HEAD
 
 // Handle server errors
 server.on('error', (error) => {
@@ -71,8 +70,4 @@ server.on('error', (error) => {
 server.listen(PORT, () => {
   console.log(`JSON Server is running on port ${PORT}`);
   console.log(`Access the API at http://localhost:${PORT}`);
-=======
-server.listen(PORT, () => {
-  console.log(`JSON Server is running on port ${PORT}`);
->>>>>>> 1ffc7ef4d3dd353cbf7e6631ce6896ad9bcb748e
-}); 
+});
