@@ -1,6 +1,7 @@
 import localData from '../../db.json';
 
 //sets base URL for all API request
+<<<<<<< HEAD
 const API_URL = import.meta.env.PROD ? '/api' : 'http://localhost:3001';
 
 const handleApiCall = async (apiCall, fallbackData) => {
@@ -15,6 +16,9 @@ const handleApiCall = async (apiCall, fallbackData) => {
     return fallbackData;
   }
 };
+=======
+const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3001';
+>>>>>>> 1ffc7ef4d3dd353cbf7e6631ce6896ad9bcb748e
 
 export const login = async (username, password) => {
   return handleApiCall(
