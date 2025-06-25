@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import './GamePage.css'
+import gamesData from '../../db.json'
 
 function GamePage() {
   const { id } = useParams()
@@ -8,13 +9,21 @@ function GamePage() {
   const [game, setGame] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [usingFallback, setUsingFallback] = useState(false)
 
   useEffect(() => {
     setLoading(true)
     setError(null)
+    setUsingFallback(false)
     
+    // First try the API
     fetch('http://localhost:3001/games')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('API response was not ok')
+        }
+        return res.json()
+      })
       .then(data => {
         const foundGame = data.find(g => g.code === id)
         if (foundGame) {
@@ -24,8 +33,16 @@ function GamePage() {
         }
       })
       .catch(err => {
-        console.error('Failed to load game:', err)
-        setError('Failed to load game')
+        console.log('Failed to load from API, trying fallback data:', err)
+        // Fallback to local data
+        const fallbackGame = gamesData.games.find(g => g.code === id)
+        if (fallbackGame) {
+          setGame(fallbackGame)
+          setUsingFallback(true)
+          setError(null)
+        } else {
+          setError('Game not found in API or local data')
+        }
       })
       .finally(() => {
         setLoading(false)
@@ -81,6 +98,18 @@ function GamePage() {
             ⛶
           </button>
         </div>
+        {usingFallback && (
+          <div style={{ 
+            backgroundColor: '#fff3cd', 
+            color: '#856404', 
+            padding: '0.75rem', 
+            marginBottom: '1rem', 
+            borderRadius: '4px',
+            fontSize: '0.9rem'
+          }}>
+            Note: Using locally stored game data (API unavailable)
+          </div>
+        )}
         <div
           ref={gameContainerRef}
           className="game-frame-container"
